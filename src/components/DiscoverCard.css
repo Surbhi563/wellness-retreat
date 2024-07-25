@@ -1,0 +1,30 @@
+.discover-card {
+    background-color: rgb(224, 217, 207);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 6px;    
+    font-size: calc(3px + 2vmin);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .yoga{
+    visibility: visible;
+    position: center;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 2%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px;
+    border-radius: 6px;
+    border: 0px solid rgb(229, 231, 235);
+}
+
+  
+  .discover-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .discover-card p {
+    margin: 10px 0;
+    color: #333;
+  }
+  

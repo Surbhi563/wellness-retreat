@@ -1,0 +1,11 @@
+.filter {
+    display: flex;
+    gap: 10px;
+    margin: 20px auto;
+  }
+  
+  .filter input {
+    flex-grow: 1;
+    padding: 5px;
+  }
+  
