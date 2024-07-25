@@ -3,14 +3,18 @@ import './RetreatCard.css';
 
 function RetreatCard({ retreat }) {
   return (
-    <div className='retreat-card'>
-      <h5 style={{ fontWeight: 'bold' }}>{retreat.title || 'No title available'}</h5>
-      <span>Date: {retreat?.date || 'N/A'}</span>
-      <br/>
-      <span>Location: {retreat?.location || 'N/A'}</span>
-      <br/>
-      <span>Price: {retreat?.price || 'N/A'}</span>
-    </div>
+    
+    <div className="retreat-card">
+    <img className='retreat-images' src={retreat.image} alt={retreat.title} />
+    <h4 style={{fontWeight:'bold'}}>{retreat.title}</h4>
+    <p>{retreat.description}</p>
+    <span>Date: {retreat.date}</span>
+    <br/>
+    <span>Location: {retreat.location}</span>
+    <br/>
+    <span>Price: ${retreat.price}</span>
+    <br/>
+  </div>
   );
 }
 
