@@ -7,12 +7,12 @@ function RetreatCard({ retreat }) {
     <div className="retreat-card">
     <img className='retreat-images' src={retreat.image} alt={retreat.title} />
     <h5 style={{fontWeight:'bold'}}>{retreat.title}</h5>
-    <p>{retreat.description}</p>
-    <span>Date: {retreat.date}</span>
+    <p className='retreat-description'>{retreat.description}</p>
+    <span className='retreat-date'>Date: {retreat.date}</span>
     <br/>
-    <span>Location: {retreat.location}</span>
+    <span className='retreat-location'>Location: {retreat.location}</span>
     <br/>
-    <span>Price: ${retreat.price}</span>
+    <span className='retreat-price'>Price: ${retreat.price}</span>
     <br/>
   </div>
   );

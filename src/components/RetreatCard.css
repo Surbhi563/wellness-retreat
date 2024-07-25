@@ -16,4 +16,32 @@
       border: 0px solid rgb(229, 231, 235);
   
   }
+  .retreat-description {
+    flex: 1 1 auto;
+    text-overflow: ellipsis;
+    margin: 10px 0;
+    line-height: 1.5em; /* Set line-height to 1.5em */
+    height: 3em; 
+  }
   
+  .retreat-details {
+    flex: 0 0 auto;
+  }
+  
+  .retreat-date,
+  .retreat-location,
+  .retreat-price {
+    margin: 5px 0;
+    flex: 0 0 auto;
+  }
+  @media (max-width: 1025px) {
+    .retreat-item {
+      height: auto; /* Let the height be auto for mobile */
+    }
+  
+    .retreat-description {
+      height: auto; /* Let the height be auto for mobile */
+      white-space: normal; /* Allow text to wrap in mobile view */
+      line-height: normal;
+    }
+  }
