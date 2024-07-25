@@ -5,7 +5,7 @@ import './RetreatList.css';
 function RetreatList({retreats}) {
 
   return (
-    <div className="container">
+    <div className="container2">
       <div className="row">
         {retreats.map((retreat, index) => (
           <div className="col-md-4 mb-4" key={index}>

@@ -6,7 +6,7 @@ function RetreatCard({ retreat }) {
     
     <div className="retreat-card">
     <img className='retreat-images' src={retreat.image} alt={retreat.title} />
-    <h4 style={{fontWeight:'bold'}}>{retreat.title}</h4>
+    <h5 style={{fontWeight:'bold'}}>{retreat.title}</h5>
     <p>{retreat.description}</p>
     <span>Date: {retreat.date}</span>
     <br/>
