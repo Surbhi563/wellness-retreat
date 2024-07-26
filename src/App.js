@@ -6,22 +6,21 @@ import Filter from './components/Filter';
 import RetreatList from './components/RetreatList';
 import Footer from './components/Footer';
 import axios from 'axios';
+import {URL} from './constants/baseUrl';
 
 function App() {
 
   const [search, setSearch] = useState(null);
   const [page, setPage] = useState(1);
   const [limit]=useState(5);
-  const [filter, setFilter]=useState(null);
+  const [filter, setFilter]=useState('');
   const [totalPages, setTotalPages] = useState(0);
   const [retreats, setRetreats] = useState([]);
   const [selectedRange, setSelectedRange] = useState('');
 
   useEffect(() => {
     const fetchRetreats = async () => {
-      let url = `https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats`;
-
-      const response = await fetch(url);
+      const response = await fetch(URL);
       const data = await response.json();
       setTotalPages(Math.ceil(data.length/5))
     };
@@ -47,19 +46,19 @@ function App() {
 };
 // Function to fetch data from API and filter based on date range
 const fetchDataAndFilter = async (range) => {
-
   if(filter){
   const { start, end } = getDateRange(range);
-
   try {
-    let url='https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats';
+    let url= URL;
     url+=`?filter=${filter}`;
     const response = await axios.get(url);
     let filtered=response.data;
     if(range){
+    console.log("yes");
+    console.log(start,end);
     filtered = response.data.filter(retreat => {
       const retreatDate = retreat.date; // Assuming `date` is in Unix timestamp format
-      return retreatDate >= start && retreatDate < end;
+      return retreatDate >= start && retreatDate <= end;
     });
   }
     setRetreats(filtered);
@@ -67,9 +66,15 @@ const fetchDataAndFilter = async (range) => {
     //
   }
 }
-else if(range && filter){
+  else if(range){
+  console.log('hi');
   const { start, end } = getDateRange(range);
-  const filtered = retreats.filter(retreat => {
+  let result=retreats;
+  if(!filter){
+    const output=await axios.get(URL);
+    result=output.data;
+  }
+  const filtered = result.filter(retreat => {
     const retreatDate = retreat.date; // Assuming `date` is in Unix timestamp format
     return retreatDate >= start && retreatDate < end;
   });
@@ -77,7 +82,7 @@ else if(range && filter){
 }
 else if(!filter && !range){
   try {
-    const response = await axios.get(`https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats?page=${page}&limit=5`);
+    const response = await axios.get(`${URL}?page=${page}&limit=5`);
     setRetreats(response.data);
   } catch (error) {
     //
@@ -101,9 +106,9 @@ const handleRangeChange = (event) => {
 };
   useEffect(() => {
     const fetchRetreats = async () => {
-      let url = `https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats`;
-
-      let urlPage = `https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats?page=${page}&limit=${limit}`;
+      try{
+      let url = URL;
+      let urlPage = `${URL}?page=${page}&limit=${limit}`;
 
       if(search && filter){
         url += `?search=${search}&filter=${filter}`;
@@ -120,15 +125,15 @@ const handleRangeChange = (event) => {
       if(data){
       setRetreats(data);
       }
+    }
+    catch(err){
+      setRetreats(null);
+    }
      
     };
     fetchRetreats();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, page, limit]);
-
-  
-
-
   return (
     <div className="container1">
       <Header />
