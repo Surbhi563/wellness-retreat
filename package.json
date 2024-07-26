@@ -2,6 +2,7 @@
   "name": "wellness-retreats",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Surbhi563.github.io/wellness-retreat",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -10,6 +11,7 @@
     "bootstrap": "^5.3.3",
     "date-fns": "^3.6.0",
     "eslint": "^8.57.0",
+    "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -19,6 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "eject": "react-scripts eject",
     "lint:js": "eslint .",
     "lint": "npm run lint:js"

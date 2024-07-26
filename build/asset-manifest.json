@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/wellness-retreat/static/css/main.b850b4ac.css",
+    "main.js": "/wellness-retreat/static/js/main.a6564e65.js",
+    "static/js/453.51f94d62.chunk.js": "/wellness-retreat/static/js/453.51f94d62.chunk.js",
+    "static/media/yoga.jpeg": "/wellness-retreat/static/media/yoga.c216d1fca078301bf7cb.jpeg",
+    "index.html": "/wellness-retreat/index.html",
+    "main.b850b4ac.css.map": "/wellness-retreat/static/css/main.b850b4ac.css.map",
+    "main.a6564e65.js.map": "/wellness-retreat/static/js/main.a6564e65.js.map",
+    "453.51f94d62.chunk.js.map": "/wellness-retreat/static/js/453.51f94d62.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b850b4ac.css",
+    "static/js/main.a6564e65.js"
+  ]
+}
