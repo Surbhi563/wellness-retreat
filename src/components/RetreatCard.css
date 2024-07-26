@@ -20,8 +20,8 @@
     flex: 1 1 auto;
     text-overflow: ellipsis;
     margin: 10px 0;
-    line-height: 1.5em; /* Set line-height to 1.5em */
-    height: 3em; 
+    line-height: 1.2em; /* Set line-height to 1.5em */
+    height: 6em; 
   }
   
   .retreat-details {
