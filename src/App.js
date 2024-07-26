@@ -27,11 +27,19 @@ function App() {
     };
     fetchRetreats();
   }, []);
+  useEffect(()=>{
+    if(search || page){
+      setFilter('');
+      setSelectedRange('');
+    }
+
+  },[search,page])
+
  // Function to convert date range to Unix timestamps
  const getDateRange = (range) => {
   const [startYear, endYear] = range.split('-').map(Number);
-  const startDate = new Date(startYear, 0, 1); // January 1st of the start year
-  const endDate = new Date(endYear - 1, 11, 31); // December 31, 2023
+  const startDate = new Date(startYear, 0, 1); 
+  const endDate = new Date(endYear - 1, 11, 31); 
   return {
     start: Math.floor(startDate.getTime() / 1000), // Convert to Unix timestamp
     end: Math.floor(endDate.getTime() / 1000)
@@ -39,7 +47,6 @@ function App() {
 };
 // Function to fetch data from API and filter based on date range
 const fetchDataAndFilter = async (range) => {
-  console.log(range,filter);
 
   if(filter){
   const { start, end } = getDateRange(range);
@@ -57,7 +64,7 @@ const fetchDataAndFilter = async (range) => {
   }
     setRetreats(filtered);
   } catch (error) {
-    console.error('Error fetching retreats', error);
+    //
   }
 }
 else if(range && filter){
@@ -70,17 +77,19 @@ else if(range && filter){
 }
 else if(!filter && !range){
   try {
-    const response = await axios.get('https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats?page=1&limit=5');
+    const response = await axios.get(`https://669f704cb132e2c136fdd9a0.mockapi.io/api/v1/retreats?page=${page}&limit=5`);
     setRetreats(response.data);
   } catch (error) {
-    console.error('Error fetching retreats', error);
+    //
   }
+
 }
 };
 useEffect(()=>{
   if(filter || selectedRange){
     fetchDataAndFilter(selectedRange);
   }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[filter,selectedRange])
 
 
@@ -100,21 +109,21 @@ const handleRangeChange = (event) => {
         url += `?search=${search}&filter=${filter}`;
       }
 
-      if (search) {
+      else if (search) {
         url += `?search=${search}`;
       }
       else{
         url=urlPage;
       }
-      console.log(url,filter,search);
-      const response = await fetch(url);
-      const data = await response.json();
+      const response = await axios.get(url);
+      const data = await response.data;
       if(data){
       setRetreats(data);
       }
      
     };
     fetchRetreats();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, page, limit]);
 
   
